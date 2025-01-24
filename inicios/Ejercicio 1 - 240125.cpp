@@ -84,3 +84,39 @@ void mult(float x, float y)
     float multiplicacion = n1 * n2;
     cout << "La multilpicacion es: " << multiplicacion << endl;
 }
+
+
+//------------------------------ * Calcular la velocidad de un auto * ---------------------------//
+//Variables globales
+//Prototipo de funciones
+void pedirDatos();
+void velocidad(float x, float y);
+float n1, n2;
+
+int main()
+{
+    //Varibles locales
+    pedirDatos();
+    velocidad(n1, n2);
+
+}
+
+//Definición de funciones
+void pedirDatos()
+{
+    cout << "Ingrese la distancia recorrida por el móvil en metros: ";
+    cin >> n1;
+    cout << n1;
+    cout << endl;
+
+    cout << "Ingrese los segundos que tardo el móvil en recorrer la distancia: ";
+    cin >> n2;
+    cout << n2;
+    cout << endl;
+}
+
+void velocidad(float x, float y)
+{
+    float division = n1 / n2;
+    cout << "La velocidad es: " << division << " m/s" << endl;
+}
