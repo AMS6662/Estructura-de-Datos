@@ -12,7 +12,7 @@ MostrarVel. - Desplegar en pantalla el valor de la velocidad. */
 //Variables globales y prototipo de funciones
 void pedirDistancia();
 void pedirTiempo();
-void calcularVelocidad(float x, float y);
+void calcularVelocidad(float distancia, float tiempo);
 float d1, t1;
 
 int main()
@@ -40,7 +40,7 @@ void pedirTiempo()
 	cout << endl;
 }
 
-void calcularVelocidad(float x, float y)
+void calcularVelocidad(float distancia, float tiempo)
 {
 	float velocidad = d1 / t1;
 
