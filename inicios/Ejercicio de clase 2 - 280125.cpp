@@ -4,7 +4,7 @@
 #include < limits>
 #include <locale>
 using namespace std;
-/*------------- Practica 2 ------------------------
+/*------------- Ejercicio 2 ------------------------
 Crear un programa que permita al usuario calcular el daño total que un personaje puede causar en un ataque.
 El daño total se calcula *multiplicando* el ataque base por un multiplicador critico
 - Pedir al usuario el ataque base del personaje
