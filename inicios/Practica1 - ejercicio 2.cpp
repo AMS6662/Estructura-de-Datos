@@ -1,3 +1,5 @@
+// ConsoleApplication8.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
 //librerias y macros
 #include <iostream>
 #include <locale>
@@ -13,6 +15,8 @@ y octágono), para posteriormente calcular su área.*/
 
 //varibles globales
 void informacion();
+void calculoPerimetro();
+void calculoArea();
 float lado, perimetro, apotema, area;
 int nLados;
 
@@ -29,37 +33,20 @@ int main()
 
 	if (p1 == 'Y' || p1 == 'y')
 	{
+		cout << endl; 
 		cout << "Ingrese el valor del perimetro: ";
 		cin >> perimetro;
-		cout << endl;
 
-		cout << "Ingrese el valor del apotema: ";
-		cin >> apotema;
-		cout << endl;
-
-		float area = perimetro * apotema / 2;
-		cout << "El area del poligono es: " << area << endl;
+		calculoArea();
 	}
 
 	else
 	{
-		cout << "Ingrese el tamaño del lado: ";
-		cin >> lado;
-		cout << endl;
-
-		cout << "Ingrese el numero de lados: ";
-		cin >> nLados;
-		cout << endl;
-
-		float perimetro = nLados * lado;
-		cout << "El tamaño del perimetro es: " << perimetro << endl;
-
-		cout << "Ingrese el valor del apotema: ";
-		cin >> apotema;
-
-		float area = perimetro * apotema / 2;
-		cout << "El area del poligono es: " << area << endl;
+		calculoPerimetro();
+		calculoArea();
 	}
+
+	return 0;
 }
 
 //definición de funciones
@@ -70,4 +57,32 @@ void informacion()
 	cout << "Hexagono = 6" << endl;
 	cout << "Heptagono = 7" << endl;
 	cout << "Octagono = 8" << endl;
+}
+
+void calculoPerimetro()
+{
+	cout << endl;
+
+	cout << "Ingrese el tamaño del lado: ";
+	cin >> lado;
+	cout << endl;
+
+	cout << "Ingrese el numero de lados: ";
+	cin >> nLados;
+	cout << endl;
+
+	perimetro = nLados * lado;
+	cout << "El tamaño del perimetro es: " << perimetro;
+	cout << endl;
+}
+
+void calculoArea()
+{
+	cout << endl;
+	cout << "Ingrese el valor del apotema: ";
+	cin >> apotema;
+	cout << endl;
+
+	area = perimetro * apotema / 2;
+	cout << "El area del poligono es: " << area << endl;
 }
