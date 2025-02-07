@@ -30,7 +30,7 @@ int main()
     {
         //Mostrar un mensaje de bienvenida y el oro actual del jugador
         cout << "Has llegado a la tienda de armas ^^!" << endl;
-        cout << "Cantidad de oro disponible: " << oroJugador << endl;
+        cout << "Tienes " << oroJugador << " monedas de oro" << endl;
 
         //Paso 5: Mostrar las armas disponibles
         Arma* armasEnVenta = armas; // Almacenar el arreglo de armas en un puntero
@@ -39,10 +39,11 @@ int main()
         cout << "Las armas en venta son:" << endl;
         for (int i = 0; i < cantidadArmas; i++)
         {
-            cout << i + 1 << "." << armasEnVenta[i].nombre << "Precio:" << armasEnVenta[i].precio << "Damage:" << armasEnVenta[i].damage << endl;
+            cout << i + 1 << "." << armasEnVenta[i].nombre << ". Precio: " << armasEnVenta[i].precio << ". Damage: " << armasEnVenta[i].damage << endl;
         }
 
         //Paso 6: Mostrar el menú de opciones
+        cout << endl;
         cout << "Que deseas hacer ?" << endl;
         cout << "1 - Comprar un arma" << endl;
         cout << "2 - Salir de la tienda" << endl;
@@ -60,7 +61,7 @@ int main()
             cout << "Armas disponibles: " << endl;
             for (int i = 0; i < cantidadArmas; i++)
             {
-                cout << "Arma " << (i + 1) << ": " << armasEnVenta[i].nombre << endl;
+                cout << i +1  << ". " << armasEnVenta[i].nombre << endl;
             }
             cout << endl;
             //Ingresar numero de arma
@@ -69,6 +70,26 @@ int main()
             cout << "=> ";
             cin >> nArma;
             //Validar que este en el rango
+            if (nArma <= 3)
+            {
+                //Obtener el arma del array utilizando el indice ingresado por el jugador
+                //Verificar si tiene suficiente oro
+                if (armasEnVenta[nArma - 1].precio >= oroJugador)
+                {
+                 //resta el precio del arma del oro actual
+                 int oroActual = oroJugador - armasEnVenta[nArma - 1].precio;
+
+                 // mostra un mensaje de compra exitosa
+                 cout << "Compra exitosa !" << endl;
+                 cout << "Tienes " << oroActual << " monedas de oro" << endl;
+                }
+            }
+            else
+            {
+                cout << "La opcion ingresada es invalida ):" << endl;
+                cout << endl;
+            }
+
             break;
 
         case 2:
@@ -76,15 +97,18 @@ int main()
             cout << endl;
             cout << "Gracias por visitar la tienda de armas." << endl;
             cout << "Vuelve pronto !" << endl;
+            cout << endl;
             break;
 
         default:
             cout << endl;
             cout << "La opcion ingresada es invalida ):" << endl;
+            cout << endl;
             break;
         }
 
     }
     
     return 0;
+}
 }
