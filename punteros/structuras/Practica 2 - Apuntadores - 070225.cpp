@@ -70,19 +70,21 @@ int main()
             cout << "=> ";
             cin >> nArma;
             //Validar que este en el rango
-            if (nArma <= 3)
+            if (nArma <= cantidadArmas)
             {
-                //Obtener el arma del array utilizando el indice ingresado por el jugador
-                //Verificar si tiene suficiente oro
-                if (armasEnVenta[nArma - 1].precio >= oroJugador)
-                {
-                 //resta el precio del arma del oro actual
-                 int oroActual = oroJugador - armasEnVenta[nArma - 1].precio;
-
-                 // mostra un mensaje de compra exitosa
-                 cout << "Compra exitosa !" << endl;
-                 cout << "Tienes " << oroActual << " monedas de oro" << endl;
-                }
+               //Obtener el arma del array utilizando el indice ingresado por el jugador
+               armasEnVenta[nArma - 1].precio;
+               
+               //Verificar si tiene suficiente oro
+           
+                //resta el precio del arma del oro actual
+               int oroFinal = oroJugador - armasEnVenta[nArma - 1].precio;
+        
+                // mostra un mensaje de compra exitosa
+               cout << "Compra exitosa !" << endl;
+               cout << "Tienes " << oroFinal << " monedas de oro" << endl;
+               cout << endl;
+             
             }
             else
             {
@@ -110,5 +112,4 @@ int main()
     }
     
     return 0;
-}
 }
