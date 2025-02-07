@@ -28,11 +28,27 @@ int main()
 
     //Paso 4: Implementar el bucle inicial del juego
     //Crear un ciclo while para representar el ciclo principal del juego
-    while (true)
+    int x = 1;
+    while (x < 2)
     {
         //Mostrar un mensaje de bienvenida y el oro actual del jugador
-
+        cout << "Has llegado a la tienda de armas !" << endl;
+        cout << "Cantidad de oro disponible: " << oroJugador << endl;
+        x++;
     }
 
+    //Paso 5: Mostrar las armas disponibles
+    Arma *armasEnVenta = armas; // Almacenar el arreglo de armas en un puntero
 
+    //Recorrer el array armasEnVenta utilizando un bucle for
+    cout << endl; 
+    cout << "Las armas en venta son:" << endl;
+    for (int i = 0; i < cantidadArmas; i++)
+    {
+        cout << "Arma " << (i + 1) << ": " <<  armasEnVenta[i].nombre << endl;
+        cout << "Precio: " << armasEnVenta[i].precio << endl;
+        cout << "Damage: " << armasEnVenta[i].damage << endl;
+        cout << endl;
+    }
+    return 0;
 }
