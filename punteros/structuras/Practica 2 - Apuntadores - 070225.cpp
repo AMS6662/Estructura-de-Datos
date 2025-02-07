@@ -32,7 +32,7 @@ int main()
     while (x < 2)
     {
         //Mostrar un mensaje de bienvenida y el oro actual del jugador
-        cout << "Has llegado a la tienda de armas !" << endl;
+        cout << "Has llegado a la tienda de armas ^^!" << endl;
         cout << "Cantidad de oro disponible: " << oroJugador << endl;
         x++;
     }
@@ -50,5 +50,44 @@ int main()
         cout << "Damage: " << armasEnVenta[i].damage << endl;
         cout << endl;
     }
+
+    //Paso 6: Mostrar el menú de opciones
+    cout << "Que deseas hacer ?" << endl;
+    cout << "1 - Comprar un arma" << endl;
+    cout << "2 - Salir de la tienda" << endl;
+    cout << "=> ";
+    cin >> opcion;
+
+    //Paso 7: Procesar la opcion seleccionada
+    //Utiliza la instruccion switch para procesar la opcion seleccionada
+    switch (opcion)
+    {
+    case 1:
+    //Menu de armas
+        cout << "Armas disponibles: " << endl;
+        for (int i = 0; i < cantidadArmas; i++)
+        {
+            cout << "Arma " << (i + 1) << ": " << armasEnVenta[i].nombre << endl;
+        }
+        cout << endl;
+        //Ingresar numero de arma
+        int nArma;
+        cout << "Que numero de arma deseas comprar ?" << endl;
+        cout << "=> ";
+        cin >> nArma;
+        //Validar que este en el rango
+
+    case 2:
+     //Mensaje de despedida
+        cout << endl;
+        cout << "Gracias por visitar la tienda de armas." << endl;
+        cout << "Vuelve pronto !" << endl;
+
+    default:
+        cout << endl;
+        cout << "La opcion ingresada es invalida ):" << endl;
+    }
+
+
     return 0;
 }
