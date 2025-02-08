@@ -35,7 +35,6 @@ int main()
         //Paso 5: Mostrar las armas disponibles
         Arma* armasEnVenta = armas; // Almacenar el arreglo de armas en un puntero
         //Recorrer el array armasEnVenta utilizando un bucle for
-        cout << endl;
         cout << "Las armas en venta son:" << endl;
         for (int i = 0; i < cantidadArmas; i++)
         {
@@ -48,9 +47,10 @@ int main()
         cout << "1 - Comprar un arma" << endl;
         cout << "2 - Salir de la tienda" << endl;
         cout << "=> ";
-        
+
         int opcion;
-        cin >> opcion; 
+        cin >> opcion;
+        cout << endl;
 
         //Paso 7: Procesar la opcion seleccionada
         //Utiliza la instruccion switch para procesar la opcion seleccionada
@@ -61,7 +61,7 @@ int main()
             cout << "Armas disponibles: " << endl;
             for (int i = 0; i < cantidadArmas; i++)
             {
-                cout << i +1  << ". " << armasEnVenta[i].nombre << endl;
+                cout << i + 1 << ". " << armasEnVenta[i].nombre << endl;
             }
             cout << endl;
             //Ingresar numero de arma
@@ -70,21 +70,27 @@ int main()
             cout << "=> ";
             cin >> nArma;
             //Validar que este en el rango
-            if (nArma <= cantidadArmas)
+            if (nArma > 0 && nArma <= cantidadArmas)
             {
-               //Obtener el arma del array utilizando el indice ingresado por el jugador
-               armasEnVenta[nArma - 1].precio;
-               
-               //Verificar si tiene suficiente oro
-           
-                //resta el precio del arma del oro actual
-               int oroFinal = oroJugador - armasEnVenta[nArma - 1].precio;
-        
-                // mostra un mensaje de compra exitosa
-               cout << "Compra exitosa !" << endl;
-               cout << "Tienes " << oroFinal << " monedas de oro" << endl;
-               cout << endl;
-             
+                //Obtener el arma del array utilizando el indice ingresado por el jugador
+                Arma armaSeleccionada = armas[nArma - 1];
+
+                //Verificar si tiene suficiente oro
+                if (oroJugador >= armaSeleccionada.precio)
+                {
+                    //resta el precio del arma del oro actual
+                    oroJugador -= armasEnVenta[nArma - 1].precio;
+
+                    // mostra un mensaje de compra exitosa
+                    cout << "Compra exitosa ! Has comprado " << armaSeleccionada.nombre << endl;
+                    cout << "Tienes " << oroJugador << " monedas de oro restantes." << endl;
+                    cout << endl;
+                }
+                else
+                {
+                    cout << "No tienes suficientes monedas de oro para comprar esa arma ):" << endl;
+                    cout << endl;
+                }
             }
             else
             {
@@ -95,9 +101,7 @@ int main()
             break;
 
         case 2:
-            //Mensaje de despedida
-            cout << endl;
-            cout << "Gracias por visitar la tienda de armas." << endl;
+            cout << "Gracias por visitar la tienda de armas ^^" << endl;
             cout << "Vuelve pronto !" << endl;
             cout << endl;
             break;
@@ -110,6 +114,6 @@ int main()
         }
 
     }
-    
+
     return 0;
 }
