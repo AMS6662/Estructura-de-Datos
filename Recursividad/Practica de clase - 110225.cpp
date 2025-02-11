@@ -31,8 +31,9 @@ int main()
 	//El jugador empieza con 10 puntos de habilidad para distrubuir entra Fuerza, Inteligencia y Destreza
 	// Solicita al jugador que asigne estos puntos
 	//Verifica que no asigne más de 10 puntos en total
-	int puntosHabilidad = 10;
-	int habilidadTotal;
+	int habilidad = 10;
+	int habilidadTotal = personaje1.fuerza + personaje1.inteligencia + personaje1.destreza;
+
 	cout << "Su personaje tiene un total de 10 puntos de habilidad." << endl;
 	cout << "Puntos de Fuerza: ";
 	cin >> personaje1.fuerza;
@@ -42,4 +43,21 @@ int main()
 
 	cout << "Puntos de Destreza: ";
 	cin >> personaje1.destreza;
+
+		if (habilidadTotal == habilidad)
+		{
+			cout << "Su personaje está listo";
+		}
+		else
+		{
+			cout << "Los valores ingresados son incorrectos";
+			cout << "Puntos de Fuerza: ";
+			cin >> personaje1.fuerza;
+
+			cout << "Puntos de Inteligencia: ";
+			cin >> personaje1.inteligencia;
+
+			cout << "Puntos de Destreza: ";
+			cin >> personaje1.destreza;
+		}
 }
