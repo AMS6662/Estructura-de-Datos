@@ -4,48 +4,72 @@
 #define M_PI 3.141592653
 using namespace std;
 
-/*---------------------Ejercicio 2. Recursividad------------------
-PASO 1. Variables y constantes necesarias
-- Var para almacenar la potencia del tiro (entre 0 y 100)
-- Var. que almacene el angulo (entre 0 y 90)
-- Var de gravedad (9.81)
-- Puntero que almacene la posición horizontal "x", del balón (inicialmente 0)
-- Puntero que almacene la posición vertical "y", del balón (inicialmente 0)
-- Var que almacene el tiempo transcurrido desde el lamzamiento del balón (incialmente 0.1)*/
-
-//Funcion recursiva
-void CalculoTrayectoria(double * posX, double* posY, double time, int power, int angle, double gravity)
-    {
+//Definir funcion recursiva
+void TrajectoryCalculation(double* posX, double* posY, double time, int power, int angle, 
+    double gravity, double *finalPosX, double *finalPosY, double& finalTime)
+{
     double velocityX = power * cos(angle * M_PI / 180); //Se usan sin y cos pues estas son 
     double velocityY = power * sin(angle * M_PI / 180); // funciones trigonometricas
+
     //Actualiza la posición horizontal y vertical
     *posX = velocityX * time;
-    *posY = velocityY * time - 0.5 * time * time; 
-    cout << "Tiempo:" << time << "S -> " << "Posición (x,y): (" << *posX << "," << *posY << ")" << endl;
-   //Verificar si el balón ha llegado al suelo. Terminar la función
+    *posY = velocityY * time - 0.5 * time * time;
+
+    //Verificar si el balón ha llegado al suelo. Terminar la función
     if (*posY <= 0)
     {
-        cout << "El balon ha tocado el suelo. Fin del tiro." << endl;
+        *finalPosX = *posX;
+        *finalPosY = 0;
+        finalTime = time;
         return;
     }
-    }
-
 //Si el balón ha llegado al suelo, llamar recursivamente la función
 //TrajectoryCalculation para calcular la trayectoria para el siguiente paso de tiempo
-int main(double* posX, double* posY, double time, int power, int angle, double gravity)
-{
+    TrajectoryCalculation(posX, posY, time + 0.1, power, angle, gravity, finalPosX,
+        finalPosY, finalTime);
+
+}
+
+int main()
+{//Definir las variables
+    double posX = 0;
+    double posY = 0;
+    double time = 0.1;
+    int power;
+    int angle;
+    double gravity = 9.81;
+    double finalPosX = 0;
+    double finalPosY = 0;
+    double finalTime = 0;
+
    //Solicitar potencia del tiro
     cout << "Ingrese la potencia del tiro: ";
     cin >> power;
+    cout << endl;
     //Validar que esté entre 0 y 100
-    if (power <= 100)
+    if (power >= 0 && power <= 100)
     {
-
+       //Solicitar el ángulo del tiro
+        cout << "Ingrese el angulo del tiro: ";
+        cin >> angle;
+        cout << endl;
+        //Validar que esté entre 0 y 90
+        if (angle >= 0 && angle <= 90)
+        {
+            //Llamar TrajectoryCalculation para calcular la trayectoria
+            TrajectoryCalculation(&posX, &posY, time, power, angle, gravity, &finalPosX, 
+                &finalPosY, finalTime);
+            cout << "Tiempo:" << finalTime << "s -> " << "Posicion (x,y): (" 
+                << finalPosX << "," << finalPosY << ")" << endl;
+        }
+        else
+        {
+            cout << "Angulo invalido";
+        }
     }
-    
-    if (*posY > 0)
+    else
     {
-        CalculoTrayectoria(posX, posY, time, power, angle, gravity);
-        time =+ 0.1;
+        cout << "Potencia invalida";
     }
+    return 0;
 }
