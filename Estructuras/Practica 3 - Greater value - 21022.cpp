@@ -12,7 +12,7 @@ struct comida {
 typedef comida food;
 
 // 3. Crear una función que reciba dos objetos y que devuelva el objeto más valioso
-food masValioso(const food& a, const food& b, const food& c)
+food masValioso(const food& a, const food& b)
 {
 	return (a.nutricion > b.nutricion) ? a : b;
 }
@@ -21,9 +21,8 @@ int main()
 {
 	food cake = { "Cake", 25, 'S'};
 	food fries = { "Fries", 15, 'C' };
-	food tacos = { "Tacos", 50, 'A' };
-
-	food mejor = masValioso(cake, fries, tacos);
+	
+	food mejor = masValioso(cake, fries);
 
 	cout << "El objeto más valioso es: " << mejor.nombre << " -> Nutricion: " << mejor.nutricion << endl;
 
