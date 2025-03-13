@@ -13,15 +13,20 @@ using namespace std;
 
 int enemigo = 1;
 int baseXP = 1;
+int finalXP;
+
+//Definicion de calcularXP
+int calcularXP(int enemigo, int baseXP) //Parametros
+{
+    return enemigo * 100;
+}
 
 int main()
 {
-    cout << "Cuantos enemigos quieres atacar?"
-    return 0;
-}
+    cout << "Cuantos enemigos quieres atacar?: ";
+    cin >> enemigo;
+    finalXP = calcularXP(enemigo, baseXP);
 
-//Definicion de calcularXP
-void calcularXP(int enemigo, int baseXP) //Parametros
-{
-    baseXP = enemigo * 100;
+    cout << "Ganaste " << finalXP << "HP!";
+        return 0;
 }
